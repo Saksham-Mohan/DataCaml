@@ -1,0 +1,16 @@
+### Starting build.
+# Target: test.ml.depends, tags: { package(ANSITerminal), package(oUnit), package(yojson), debug, extension:ml, file:test.ml, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package ANSITerminal -package yojson -package oUnit -modules test.ml > test.ml.depends # cached
+# Target: listndarray.mli.depends, tags: { package(ANSITerminal), package(oUnit), package(yojson), debug, extension:mli, file:listndarray.mli, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package ANSITerminal -package yojson -package oUnit -modules listndarray.mli > listndarray.mli.depends # cached
+# Target: listndarray.cmi, tags: { package(ANSITerminal), package(oUnit), package(yojson), byte, compile, debug, extension:mli, file:listndarray.mli, interf, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -g -package ANSITerminal -package yojson -package oUnit -o listndarray.cmi listndarray.mli
+# Target: test.cmo, tags: { package(ANSITerminal), package(oUnit), package(yojson), byte, compile, debug, extension:cmo, extension:ml, file:test.cmo, file:test.ml, implem, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -g -package ANSITerminal -package yojson -package oUnit -o test.cmo test.ml
+# Target: listndarray.ml.depends, tags: { package(ANSITerminal), package(oUnit), package(yojson), debug, extension:ml, file:listndarray.ml, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package ANSITerminal -package yojson -package oUnit -modules listndarray.ml > listndarray.ml.depends # cached
+# Target: listndarray.cmo, tags: { package(ANSITerminal), package(oUnit), package(yojson), byte, compile, debug, extension:cmo, extension:ml, file:listndarray.cmo, file:listndarray.ml, implem, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -g -package ANSITerminal -package yojson -package oUnit -o listndarray.cmo listndarray.ml
+# Target: test.byte, tags: { package(ANSITerminal), package(oUnit), package(yojson), byte, debug, dont_link_with, extension:byte, file:test.byte, link, ocaml, program, quiet, traverse }
+ocamlfind ocamlc -linkpkg -g -package ANSITerminal -package yojson -package oUnit listndarray.cmo test.cmo -o test.byte
+# Compilation successful.
